@@ -1,0 +1,7 @@
+reports/*
+.idea/*
+*.iml
+target/*
+output.txt
+.DS_Store
+logs

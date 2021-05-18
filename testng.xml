@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Spree Commerce Tests">
+    <listeners>
+        <listener class-name="listeners.Listeners"></listener>
+    </listeners>
+    <groups>
+        <run>
+            <exclude name="fail"></exclude>
+        </run>
+    </groups>
+    <test name="StartStopDocker">
+        <classes>
+            <class name="docker.StartStopDocker"></class>
+        </classes>
+    </test>
+    <test name="LoginTests">
+        <classes>
+            <class name="LoginTests"></class>
+        </classes>
+    </test>
+    <test name="RegisterUserTests">
+        <classes>
+            <class name="RegisterNewUserTests"></class>
+        </classes>
+    </test>
+    <test name="SearchTests">
+        <classes>
+            <class name="SearchTests">
+                <parameter name="validSearchKeyword" value="dress"></parameter>
+                <parameter name="invalidSearchKeyword" value="invalid"></parameter>
+            </class>
+        </classes>
+    </test>
+    <test name="FailExampleTest">
+        <classes>
+            <class name="FailExampleTest"></class>
+        </classes>
+    </test>
+    <test name="CartTests">
+        <classes>
+            <class name="CartTests"></class>
+        </classes>
+    </test>
+</suite>

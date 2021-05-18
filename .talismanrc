@@ -1,0 +1,12 @@
+fileignoreconfig:
+- filename: src/main/java/pageObjects/RegisterUserAndLoginPage.java
+  checksum: b003adc2b8507effea23c3fbf056fc3e103ecfe9fcd04a8a3120663ad43a0e63
+  ignore_detectors: []
+fileignoreconfig:
+- filename: logs/prints.log
+  checksum: 0d7dc84ed3af37b516d57ec4ac41409ea3e57049cf9c68452a9e18d35c00dd79
+  ignore_detectors: []
+- filename: .jenkinsfile
+  checksum: 368a6f7d011361cd9abcd1d9e1aca4da9c204aaf685001d1eb583666f23e3364
+  ignore_detectors: []
+scopeconfig: []
