@@ -1,9 +1,8 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import resources.Base;
 
 public class Navbar extends Base {
@@ -11,48 +10,23 @@ public class Navbar extends Base {
 
     public Navbar (WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "#account-button")
-    private WebElement accountIcon;
+    private By accountIcon = By.id("menuUserLink");
 
-    @FindBy(css = "a[href*=signup]")
-    private WebElement signUp;
+    private By searchIcon = By.id("search");
 
-    @FindBy(css = "a[href*=login]")
-    private WebElement login;
-
-    @FindBy(css = "a[href*=logout]")
-    private WebElement logout;
-
-    @FindBy(className = "search-icons")
-    private WebElement searchIcon;
-
-    @FindBy(id = "keywords")
-    private WebElement keywords;
+    private By keywords = By.id("autoComplete");
 
     public WebElement getAccountIcon(){
-        return accountIcon;
-    }
-
-    public WebElement getLogout() {
-        return logout;
-    }
-
-    public WebElement getLogin() {
-        return login;
-    }
-
-    public WebElement getSignUp(){
-        return signUp;
+        return driver.findElement(accountIcon);
     }
 
     public WebElement getSearchIcon(){
-        return searchIcon;
+        return driver.findElement(searchIcon);
     }
 
     public WebElement getKeywords(){
-        return keywords;
+        return driver.findElement(keywords);
     }
 }
