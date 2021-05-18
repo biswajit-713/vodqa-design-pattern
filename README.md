@@ -15,3 +15,7 @@ For login tests, you will have to create a new user via the UI and store the cre
 2. _getValidUserData_ data provider in the LoginTests.java file (do not check in this file with test credentials to avoid security issues)
 
 For register new users test, the test will generate a random email id every time the test is run, with the same password. If needed, you can pull the password from external sources
+
+**Running the cart tests**
+
+For the cart tests, the data is fetched from the "Product Details.xlsx" file in the resources folder
