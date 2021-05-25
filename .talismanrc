@@ -1,5 +1,5 @@
 fileignoreconfig:
-- filename: src/main/java/pageObjects/RegisterUserAndLoginPage.java
+- filename: src/main/java/page/RegisterUserAndLoginPage.java
   checksum: b003adc2b8507effea23c3fbf056fc3e103ecfe9fcd04a8a3120663ad43a0e63
   ignore_detectors: []
 fileignoreconfig:
