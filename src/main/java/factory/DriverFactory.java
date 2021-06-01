@@ -26,7 +26,6 @@ public class DriverFactory {
 
     private Supplier<WebDriver> chromeDriver = () -> {
         WebDriverManager.chromedriver().setup();
-//        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/java/resources/chromedriver");
         ChromeOptions options = new ChromeOptions();
         return new ChromeDriver(options);
     };

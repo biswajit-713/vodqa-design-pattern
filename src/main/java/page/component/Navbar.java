@@ -1,9 +1,10 @@
-package page;
+package page.component;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.Base;
 
 public class Navbar extends Base {
     private WebDriver driver;
@@ -12,8 +13,13 @@ public class Navbar extends Base {
         this.driver = driver;
     }
 
-    private final By accountIcon = By.id("menuUserLink");
-    private final By searchIcon = By.id("search");
+    private final By accountIcon = By.id("account-button");
+    private final By signUp = By.linkText("SIGN UP");
+    private final By login = By.linkText("LOG IN");
+
+    private final By searchIcon = By.className("search-icons");
+    private final By searchBox = By.name("keywords");
+
     private final By keywords = By.id("autoComplete");
     private final By user = By.className("hi-user");
 
@@ -21,8 +27,20 @@ public class Navbar extends Base {
         return driver.findElement(accountIcon);
     }
 
+    public WebElement getSignUp() {
+        return driver.findElement(signUp);
+    }
+
+    public WebElement getLogin() {
+        return driver.findElement(login);
+    }
+
     public WebElement getSearchIcon(){
         return driver.findElement(searchIcon);
+    }
+
+    public WebElement getSearchBox() {
+        return driver.findElement(searchBox);
     }
 
     public WebElement getKeywords(){

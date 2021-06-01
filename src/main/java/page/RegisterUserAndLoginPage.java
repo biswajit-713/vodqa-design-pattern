@@ -14,6 +14,10 @@ public class RegisterUserAndLoginPage extends Base {
     private WebDriver driver;
 
     By createNewAccount = By.className("create-new-account");
+    By loginName = By.name("username");
+    By loginPassword = By.name("password");
+    By signin = By.id("sign_in_btnundefined");
+    By loginModal = By.className("loginPopUpCloseBtn");
 
     public RegisterUserAndLoginPage(WebDriver driver){
         this.driver = driver;
@@ -44,6 +48,15 @@ public class RegisterUserAndLoginPage extends Base {
     @FindBy(name = "commit")
     private WebElement login;
 
+    @FindBy(name = "first_nameRegisterPage")
+    private WebElement firstName;
+
+    @FindBy(name = "last_nameRegisterPage")
+    private WebElement lastName;
+
+    @FindBy(name = "phone_numberRegisterPage")
+    private WebElement phoneNumber;
+
     public WebElement getCreateAccount() {
         return createAccount;
     }
@@ -58,6 +71,18 @@ public class RegisterUserAndLoginPage extends Base {
 
     public WebElement getPassword(){
         return password;
+    }
+
+    public WebElement getFirstName() {
+        return firstName;
+    }
+
+    public WebElement getLastName() {
+        return lastName;
+    }
+
+    public WebElement getPhoneNumber() {
+        return phoneNumber;
     }
 
     public WebElement getConfirmPassword(){
@@ -78,6 +103,22 @@ public class RegisterUserAndLoginPage extends Base {
         return login;
     }
 
+    public WebElement getLoginName() {
+        return driver.findElement(loginName);
+    }
+
+    public WebElement getLoginPassword() {
+        return driver.findElement(loginPassword);
+    }
+
+    public WebElement getSignin() {
+        return driver.findElement(signin);
+    }
+
+    public WebElement getLoginModal() {
+        return driver.findElement(loginModal);
+    }
+
     public RegisterUserAndLoginPage waitUntilPageLoads() {
         boolean isPageLoaded = new WebDriverWait(driver, 30).until(d -> d.findElement(createNewAccount).isDisplayed());
 
@@ -87,4 +128,5 @@ public class RegisterUserAndLoginPage extends Base {
             throw new NoSuchElementException("Login dialog is not loaded");
         }
     }
+
 }

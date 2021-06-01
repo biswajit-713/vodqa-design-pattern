@@ -1,41 +1,30 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProductDetailsPage extends Base {
     private WebDriver driver;
 
+    private By addToCartButton = By.name("save_to_cart");
+    private By checkout = By.id("check_out_btn");
+
     public ProductDetailsPage(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 
-    @FindAll({@FindBy(xpath = "//input[contains(@id,'variant_option_value_id_')]//following-sibling::label/span")})
-    private List<WebElement> sizeOptions;
-
-    @FindBy(id = "add-to-cart-button")
-    private WebElement addToCartButton;
-
-    @FindBy(className = "product-added-modal-message")
-    private WebElement productAddedModal;
-
-    public WebElement getSizeOptions(String option){
-        return (sizeOptions.stream().filter(el -> el.getText().equals(option)).collect(Collectors.toList())).get(0);
+    private WebElement getAddToCartButton(){
+        return driver.findElement(addToCartButton);
     }
 
-    public WebElement getAddToCartButton(){
-        return addToCartButton;
+    private WebElement checkout(){
+        return driver.findElement(checkout);
     }
 
-    public WebElement getProductAddedModal(){
-        return productAddedModal;
+    public void addToCart() {
+        getAddToCartButton().click();
+        checkout().click();
     }
-
 }
