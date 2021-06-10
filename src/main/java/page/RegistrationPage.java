@@ -3,6 +3,7 @@ package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegistrationPage {
     private final WebDriver driver;
@@ -30,5 +31,9 @@ public class RegistrationPage {
 
     public WebElement getSignUp() {
         return driver.findElement(signUp);
+    }
+
+    public boolean waitUntilLoaded() {
+        return new WebDriverWait(this.driver, 10).until(d -> d.findElement(email).isDisplayed());
     }
 }

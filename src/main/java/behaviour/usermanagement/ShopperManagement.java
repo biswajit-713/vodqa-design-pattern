@@ -1,12 +1,8 @@
 package behaviour.usermanagement;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import entity.Shopper;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.*;
-
-import java.util.concurrent.TimeUnit;
 
 public class ShopperManagement {
 
@@ -17,6 +13,7 @@ public class ShopperManagement {
     ShippingAddressPage shippingAddressPage;
 
     public ShopperManagement(WebDriver driver) {
+
         this.loginPage = new LoginPage(driver);
         this.registrationPage = new RegistrationPage(driver);
         this.landingPage = new LandingPage(driver);
@@ -40,7 +37,7 @@ public class ShopperManagement {
         landingPage.navbar().getAccountIcon().click();
         landingPage.navbar().getSignUp().click();
 
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+        registrationPage.waitUntilLoaded();
         registrationPage.getEmail().sendKeys(newShopper.getEmail());
         registrationPage.getPassword().sendKeys(newShopper.getPassword());
         registrationPage.getConfirmPassword().sendKeys(newShopper.getPassword());

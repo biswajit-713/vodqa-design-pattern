@@ -18,7 +18,7 @@ public class Navbar extends Base {
     private final By login = By.linkText("LOG IN");
 
     private final By searchIcon = By.className("search-icons");
-    private final By searchBox = By.name("keywords");
+    private final By searchBox = By.id("keywords");
 
     private final By keywords = By.id("autoComplete");
     private final By user = By.className("hi-user");

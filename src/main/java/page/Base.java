@@ -1,13 +1,17 @@
 package page;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import utilities.Utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,23 +21,28 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Base {
-    private WebDriver driver;
+    protected WebDriver driver;
     private static Properties properties;
 
-    protected WebDriver initialiseDriver() throws IOException {
-        properties = new Properties();
-        properties.load(new FileInputStream(System.getProperty("user.dir")+"/src/main/java/resources/application_test.properties"));
-        switch (properties.getProperty("browser")){
+    @SneakyThrows
+    protected WebDriver initialiseDriver() {
+        String browser = Utilities.getProperty("browser");
+
+        switch (browser){
             case "chrome_docker":
                 WebDriverManager.chromedriver().setup();
-                ChromeOptions chromeOptions = new ChromeOptions();
-                driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
+                ChromeOptions remoteOptions = new ChromeOptions();
+                driver = new RemoteWebDriver(new URL("http://localhost:4444"), remoteOptions);
                 break;
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                driver = new FirefoxDriver(firefoxOptions);
                 break;
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

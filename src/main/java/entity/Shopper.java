@@ -70,7 +70,7 @@ public class Shopper {
         return state;
     }
 
-    private Shopper(ShopperBuilder builder) {
+    private Shopper(builder builder) {
         this.email = builder.email;
         this.password = builder.password;
         this.firstName = builder.firstName;
@@ -83,7 +83,7 @@ public class Shopper {
         this.state = builder.state;
     }
 
-    public static class ShopperBuilder {
+    public static class builder {
         private final String email;
         private final String password;
         private String firstName;
@@ -95,47 +95,47 @@ public class Shopper {
         private String address2;
         private String state;
 
-        public ShopperBuilder(String email, String password) {
+        public builder(String email, String password) {
             this.email = email;
             this.password = password;
         }
 
-        public ShopperBuilder firstName(String firstName) {
+        public builder firstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public ShopperBuilder lastName(String lastName) {
+        public builder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-        public ShopperBuilder phoneNumber(String phoneNUmber) {
+        public builder phoneNumber(String phoneNUmber) {
             this.phoneNUmber = phoneNUmber;
             return this;
         }
 
-        public ShopperBuilder address(String address) {
+        public builder address(String address) {
             this.address = address;
             return this;
         }
 
-        public ShopperBuilder city(String city) {
+        public builder city(String city) {
             this.city = city;
             return this;
         }
 
-        public ShopperBuilder zipCode(String zipcode) {
+        public builder zipCode(String zipcode) {
             this.zipcode = zipcode;
             return this;
         }
 
-        public ShopperBuilder address2(String address2) {
+        public builder address2(String address2) {
             this.address2 = address2;
             return this;
         }
 
-        public ShopperBuilder state(String state) {
+        public builder state(String state) {
             this.state = state;
             return this;
         }

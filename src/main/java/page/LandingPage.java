@@ -1,6 +1,6 @@
 package page;
 
-import exception.FrameworkException;
+import exception.SpreeTestException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import page.component.Navbar;
@@ -30,7 +30,7 @@ public class LandingPage {
                 .findFirst();
 
         if (!match.isPresent()) {
-            throw new FrameworkException(item + " is not found");
+            throw new SpreeTestException(item + " is not found");
         }
         match.get().click();
     }

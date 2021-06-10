@@ -1,35 +1,16 @@
+package spreetest;
+
 import behaviour.usermanagement.MyAccount;
 import behaviour.usermanagement.ShopperManagement;
-import behaviour.usermanagement.ShopperRegistration;
-import com.google.common.util.concurrent.Uninterruptibles;
 import entity.Shopper;
-import factory.DriverFactory;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import page.Base;
+import spreetest.base.BaseTest;
 import utilities.Utilities;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
-public class RegisterNewShopperTests extends Base {
-    WebDriver driver;
-
+public class RegisterNewShopperTests extends BaseTest {
     private ShopperManagement shopperManagement;
     private MyAccount myAccount;
-
-    @BeforeTest
-    public void setUp() throws IOException {
-//        this.driver = initialiseDriver();
-        this.driver = DriverFactory.getInstance().getDriver();
-
-//        TODO - move url fetching to common utilities
-        this.driver.get("https://demo.spreecommerce.org/");
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
-        shopperManagement = new ShopperManagement(this.driver);
-        myAccount = new MyAccount(this.driver);
-    }
 
     @Test
     public void registerUserOnlyWithMandatoryAddressFieldsTest() {
@@ -37,7 +18,7 @@ public class RegisterNewShopperTests extends Base {
         String name = "john_doe_" + Utilities.getRandomNumber(1000);
         String email = name + "@shopper.com";
         String password = "Passw0rd";
-        Shopper newShopper = new Shopper.ShopperBuilder(email, password)
+        Shopper newShopper = new Shopper.builder(email, password)
                 .firstName("john")
                 .lastName("doe")
                 .phoneNumber("2013520000")
@@ -45,6 +26,9 @@ public class RegisterNewShopperTests extends Base {
                 .city("Akiachak")
                 .zipCode("99551")
                 .build();
+
+        shopperManagement = new ShopperManagement(driver);
+        myAccount = new MyAccount(driver);
 
         shopperManagement.createNewAccountFor(newShopper);
         Assert.assertEquals(myAccount.getSignupMessage(), "New address has been successfully created",
@@ -57,7 +41,7 @@ public class RegisterNewShopperTests extends Base {
         String name = "john_doe_" + Utilities.getRandomNumber(1000);
         String email = name + "@shopper.com";
         String password = "Passw0rd";
-        Shopper newShopper = new Shopper.ShopperBuilder(email, password)
+        Shopper newShopper = new Shopper.builder(email, password)
                 .firstName("john")
                 .lastName("doe")
                 .phoneNumber("2013520000")
@@ -67,14 +51,13 @@ public class RegisterNewShopperTests extends Base {
                 .state("Florida")
                 .zipCode("30052")
                 .build();
+
+        shopperManagement = new ShopperManagement(driver);
+        myAccount = new MyAccount(driver);
+
         shopperManagement.createNewAccountFor(newShopper);
         Assert.assertEquals(myAccount.getSignupMessage(), "New address has been successfully created",
                 "failed to signup");
 
-    }
-
-    @AfterTest
-    public void tearDown() throws IOException {
-        this.driver.quit();
     }
 }
