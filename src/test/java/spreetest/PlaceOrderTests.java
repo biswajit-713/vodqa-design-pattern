@@ -13,40 +13,25 @@ import drivermanagement.factory.DriverManagerFactoryImpl;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import spreetest.base.BaseTest;
 import utilities.Utilities;
 
 import java.util.concurrent.TimeUnit;
 
-public class PlaceOrderTests {
-
-    DriverManagerFactory factory;
-    WebDriver driver;
+public class PlaceOrderTests extends BaseTest {
 
     private ProductManagement productManagement;
     private ShopperManagement shopperManagement;
     private OrderCheckout checkout;
-
-    @BeforeMethod
-    public void setUp() {
-        factory = new DriverManagerFactoryImpl();
-        driver = factory.getManager().getDriver();
-        driver.get(Utilities.getProperty("application_url"));
-        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
-
-        shopperManagement = new ShopperManagement(driver);
-        productManagement = new ProductManagement(driver);
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Test
     public void buyUsingCheckTest() {
 
         Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
         Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
+
+        productManagement = new ProductManagement(driver);
+        shopperManagement = new ShopperManagement(driver);
 
         shopperManagement.loginAs(existingShopper);
         productManagement.addToCart(productToBuy);
@@ -62,6 +47,9 @@ public class PlaceOrderTests {
     public void buyUsingCreditCard() {
         Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
         Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
+
+        productManagement = new ProductManagement(driver);
+        shopperManagement = new ShopperManagement(driver);
 
         shopperManagement.loginAs(existingShopper);
 
