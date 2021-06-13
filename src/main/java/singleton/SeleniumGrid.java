@@ -10,7 +10,6 @@ public class SeleniumGrid {
     public static SeleniumGrid getSeleniumGrid(){
         if (seleniumGrid == null){
             seleniumGrid = new SeleniumGrid();
-            return seleniumGrid;
         }
         return seleniumGrid;
     }

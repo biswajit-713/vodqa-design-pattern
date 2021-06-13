@@ -16,7 +16,6 @@ public class FileDistributor {
     public static FileDistributor getFileInstance() throws IOException {
         if (fileInstance == null){
             fileInstance = new FileDistributor();
-            return fileInstance;
         }
         return fileInstance;
     }
