@@ -1,22 +1,21 @@
 package singleton;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
 
-public class DockerSingleton {
-    public static DockerSingleton seleniumGrid;
+public class SeleniumGrid {
+    public static SeleniumGrid seleniumGrid;
 
-    public static DockerSingleton getSeleniumGrid(){
+    public static SeleniumGrid getSeleniumGrid(){
         if (seleniumGrid == null){
-            seleniumGrid = new DockerSingleton();
+            seleniumGrid = new SeleniumGrid();
             return seleniumGrid;
         }
         return seleniumGrid;
     }
 
-    public void startStopDocker(String op, String message) throws IOException, InterruptedException {
+    public void startStopGrid(String op, String message) throws IOException, InterruptedException {
         if(op.equals("start"))
             Runtime.getRuntime().exec(System.getProperty("user.dir")+"/startDocker.sh");
         else
