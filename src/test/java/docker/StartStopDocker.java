@@ -3,6 +3,7 @@ package docker;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import singleton.DockerSingleton;
+import singleton.FileDistributor;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +16,7 @@ public class StartStopDocker {
 
     @AfterSuite
     public void stopDocker() throws IOException, InterruptedException {
-        File file = new File("output.txt");
         DockerSingleton.getSeleniumGrid().startStopDocker("stop", "Removing selenium-hub");
-        file.delete();
+        FileDistributor.getFileInstance().getFile("output.txt").delete();
     }
 }

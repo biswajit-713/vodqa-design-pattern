@@ -1,8 +1,10 @@
 package utilities;
 
 import exception.SpreeTestException;
+import singleton.FileDistributor;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
@@ -13,13 +15,13 @@ public class Utilities {
     }
 
     public static String getProperty(String key) {
-        Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(System.getProperty("user.dir")+"/src/main/java/resources/application_test.properties"));
-            return properties.getProperty(key.toLowerCase());
+            return FileDistributor
+                    .getFileInstance()
+                    .getPropertyFile()
+                    .getProperty(key.toLowerCase());
         } catch (IOException e) {
             throw new SpreeTestException(e.getLocalizedMessage());
         }
-
     }
 }
