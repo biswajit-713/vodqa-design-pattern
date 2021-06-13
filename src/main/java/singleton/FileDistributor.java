@@ -5,13 +5,15 @@ import java.util.Properties;
 
 public class FileDistributor {
     private static FileDistributor fileInstance;
+    private BufferedReader outputFileBR;
     private Properties properties;
 
-    private FileDistributor () throws FileNotFoundException {
+    private FileDistributor () throws IOException {
+        outputFileBR = new BufferedReader(new FileReader(System.getProperty("user.dir")+"/output.txt"));
         properties = new Properties();
     }
 
-    public static FileDistributor getFileInstance() throws FileNotFoundException {
+    public static FileDistributor getFileInstance() throws IOException {
         if (fileInstance == null){
             fileInstance = new FileDistributor();
             return fileInstance;
@@ -19,8 +21,8 @@ public class FileDistributor {
         return fileInstance;
     }
 
-    public BufferedReader getFileForRead(String filePath) throws FileNotFoundException {
-        return new BufferedReader(new FileReader(filePath));
+    public BufferedReader getOutputFileForRead(){
+        return outputFileBR;
     }
 
     public File getFile(String filePath){

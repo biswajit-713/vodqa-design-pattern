@@ -32,7 +32,7 @@ public class DockerSingleton {
                 break;
             }
 
-            BufferedReader br = FileDistributor.getFileInstance().getFileForRead(System.getProperty("user.dir")+"/output.txt");
+            BufferedReader br = FileDistributor.getFileInstance().getOutputFileForRead();
             String line;
             while((line = br.readLine())!=null){
                 if(line.contains(message)){

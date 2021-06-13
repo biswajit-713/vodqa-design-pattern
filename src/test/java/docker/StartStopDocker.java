@@ -17,6 +17,6 @@ public class StartStopDocker {
     @AfterSuite
     public void stopDocker() throws IOException, InterruptedException {
         DockerSingleton.getSeleniumGrid().startStopDocker("stop", "Removing selenium-hub");
-        FileDistributor.getFileInstance().getFile("output.txt").delete();
+        FileDistributor.getFileInstance().getFile(System.getProperty("user.dir")+"/output.txt").delete();
     }
 }
