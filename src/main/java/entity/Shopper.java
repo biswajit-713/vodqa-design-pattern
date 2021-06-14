@@ -4,31 +4,14 @@ package entity;
 public class Shopper {
     private final String email;
     private final String password;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String address;
-    private String city;
-    private String zipCode;
-    private String address2;
-    private String state;
-
-//    public Shopper(String email, String password) {
-//        this.email = email;
-//        this.password = password;
-//    }
-//
-//    public Shopper(String email, String password, String firstName, String lastName, String phoneNumber,
-//                   String address, String city, String zipCode) {
-//        this.email = email;
-//        this.password = password;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.phoneNumber = phoneNumber;
-//        this.address = address;
-//        this.city = city;
-//        this.zipCode = zipCode;
-//    }
+    private final String firstName;
+    private final String lastName;
+    private final String phoneNumber;
+    private final String address;
+    private final String city;
+    private final String zipCode;
+    private final String address2;
+    private final String state;
 
     public String getEmail() {
         return email;

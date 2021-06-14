@@ -39,6 +39,7 @@ public class ChromeDriverManager implements DriverManager{
     }
 
     @Override
+//    TODO - remove the code from here and code it during the session
     public WebDriver getDriver() {
 
         WebDriverManager.chromedriver().setup();

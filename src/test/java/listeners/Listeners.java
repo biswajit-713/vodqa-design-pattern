@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import page.Base;
+import page.BootStrap;
 import resources.ExtentReportNG;
 
 import java.io.IOException;
 
-public class Listeners extends Base implements ITestListener  {
+public class Listeners extends BootStrap implements ITestListener  {
     ExtentTest extentTest;
     ExtentReports extentReports = ExtentReportNG.getExtentReport();
     ThreadLocal<ExtentTest> threadLocal = new ThreadLocal();

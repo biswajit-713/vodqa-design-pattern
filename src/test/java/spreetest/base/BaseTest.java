@@ -5,6 +5,7 @@ import drivermanagement.factory.DriverManagerFactoryImpl;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import page.BootStrap;
 import utilities.Utilities;
 
 public class BaseTest {
@@ -13,9 +14,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-//        driver = initialiseDriver();
+
+//        driver = new BootStrap().getDriver();
         factory = new DriverManagerFactoryImpl();
-        driver = factory.getManager().getDriver();
+        driver = factory
+                    .getManager(Utilities.getProperty("browser"))
+                    .getDriver();
         driver.get(Utilities.getProperty("application_url"));
 
     }

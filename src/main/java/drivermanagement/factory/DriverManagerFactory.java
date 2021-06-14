@@ -4,6 +4,6 @@ import drivermanagement.manager.DriverManager;
 
 public interface DriverManagerFactory {
 
-    DriverManager getManager();
+    DriverManager getManager(String browser);
 
 }

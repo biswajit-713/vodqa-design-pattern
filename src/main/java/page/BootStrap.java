@@ -20,12 +20,12 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class Base {
+public class BootStrap {
     protected WebDriver driver;
     private static Properties properties;
 
     @SneakyThrows
-    protected WebDriver initialiseDriver() {
+    public WebDriver getDriver() {
         String browser = Utilities.getProperty("browser");
 
         switch (browser){
