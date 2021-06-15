@@ -7,7 +7,7 @@ import page.checkout.ConfirmPage;
 import page.checkout.DeliveryPage;
 import page.checkout.PaymentPage;
 
-public abstract class OrderCheckout {
+public class OrderCheckout {
 
     private final AddressPage addressPage;
     private final DeliveryPage deliveryPage;
@@ -30,8 +30,6 @@ public abstract class OrderCheckout {
         addressPage.saveAndContinue().click();
     }
 
-    protected abstract void pay();
-
     private final void selectDeliveryOption() {
         deliveryPage.saveAndContinue().click();
     }
@@ -48,7 +46,6 @@ public abstract class OrderCheckout {
     public final String placeOrder() {
         editShippingDetails();
         selectDeliveryOption();
-        pay();
         confirmOrder();
         return getConfirmationStatus();
     }
