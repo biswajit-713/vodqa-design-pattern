@@ -21,6 +21,8 @@
         </classes>
     </test>
     <test name="PlaceOrderTests">
+        <parameter name="payByCheck" value="Check"></parameter>
+        <parameter name="payByCC" value="CreditCard"></parameter>
         <classes>
             <class name="spreetest.PlaceOrderTests"></class>
         </classes>

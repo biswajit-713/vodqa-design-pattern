@@ -25,7 +25,8 @@ public class PlaceOrderTests extends BaseTest {
     private OrderCheckout checkout;
 
     @Test
-    public void buyUsingCheckTest() {
+    @Parameters("payByCheck")
+    public void buyUsingCheckTest(String paymentMethod) {
 
         Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
         Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
@@ -35,7 +36,7 @@ public class PlaceOrderTests extends BaseTest {
 
         shopperManagement.loginAs(existingShopper);
         productManagement.addToCart(productToBuy);
-        checkout = new OrderCheckout(driver, "Check");
+        checkout = new OrderCheckout(driver, paymentMethod);
         String status = checkout.placeOrder();
 
         Assert.assertEquals(status, "Order placed successfully",
@@ -44,7 +45,8 @@ public class PlaceOrderTests extends BaseTest {
     }
 
     @Test
-    public void buyUsingCreditCard() {
+    @Parameters("payByCC")
+    public void buyUsingCreditCard(String paymentMethod) {
         Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
         Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
 
@@ -54,7 +56,7 @@ public class PlaceOrderTests extends BaseTest {
         shopperManagement.loginAs(existingShopper);
 
         productManagement.addToCart(productToBuy);
-        checkout = new OrderCheckout(driver, "Check");
+        checkout = new OrderCheckout(driver, paymentMethod);
         String status = checkout.placeOrder();
 
         Assert.assertEquals(status, "Order placed successfully",
