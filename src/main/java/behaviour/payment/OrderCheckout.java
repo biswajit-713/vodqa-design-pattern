@@ -1,12 +1,13 @@
 package behaviour.payment;
 
+import behaviour.payment.factory.PaymentFactory;
+import behaviour.payment.strategy.PaymentMethods;
 import org.openqa.selenium.WebDriver;
 import page.OrderStatusPage;
 import page.checkout.AddressPage;
 import page.checkout.ConfirmPage;
 import page.checkout.DeliveryPage;
 import page.checkout.PaymentPage;
-import strategy.PaymentMethods;
 
 public class OrderCheckout {
 
@@ -25,10 +26,7 @@ public class OrderCheckout {
         this.paymentPage = new PaymentPage(driver);
         this.confirmPage = new ConfirmPage(driver);
         this.orderStatusPage = new OrderStatusPage(driver);
-        if (paymentMethod.equals("Check"))
-            this.paymentMethods = new OrderCheckoutWithCheck(driver);
-        else
-            this.paymentMethods = new OrderCheckoutWithCreditCard(driver);
+        this.paymentMethods = new PaymentFactory(driver).createPaymentFactory(paymentMethod);
     }
 
     private final void editShippingDetails() {

@@ -1,8 +1,8 @@
 package behaviour.payment;
 
+import behaviour.payment.strategy.PaymentMethods;
 import org.openqa.selenium.WebDriver;
 import page.checkout.PaymentPage;
-import strategy.PaymentMethods;
 
 public class OrderCheckoutWithCheck implements PaymentMethods {
 

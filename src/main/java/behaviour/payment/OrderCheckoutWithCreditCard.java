@@ -1,10 +1,10 @@
 package behaviour.payment;
 
+import behaviour.payment.strategy.PaymentMethods;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import page.checkout.PaymentPage;
 import page.component.CreditCardComponent;
-import strategy.PaymentMethods;
 
 import java.util.HashMap;
 import java.util.Map;
