@@ -35,7 +35,7 @@ public class PlaceOrderTests extends BaseTest {
 
         shopperManagement.loginAs(existingShopper);
         productManagement.addToCart(productToBuy);
-        checkout = new OrderCheckoutWithCheck(driver);
+        checkout = new OrderCheckout(driver, "Check");
         String status = checkout.placeOrder();
 
         Assert.assertEquals(status, "Order placed successfully",
@@ -54,7 +54,7 @@ public class PlaceOrderTests extends BaseTest {
         shopperManagement.loginAs(existingShopper);
 
         productManagement.addToCart(productToBuy);
-        checkout = new OrderCheckoutWithCreditCard(driver);
+        checkout = new OrderCheckout(driver, "Check");
         String status = checkout.placeOrder();
 
         Assert.assertEquals(status, "Order placed successfully",

@@ -9,13 +9,12 @@ import strategy.PaymentMethods;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrderCheckoutWithCreditCard extends OrderCheckout implements PaymentMethods {
+public class OrderCheckoutWithCreditCard implements PaymentMethods {
 
     private final PaymentPage paymentPage;
     private final CreditCardComponent creditCardComponent;
 
     public OrderCheckoutWithCreditCard(WebDriver driver) {
-        super(driver);
         paymentPage = new PaymentPage(driver);
         creditCardComponent = new CreditCardComponent(driver);
     }

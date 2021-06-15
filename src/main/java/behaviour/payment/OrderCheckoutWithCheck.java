@@ -4,12 +4,11 @@ import org.openqa.selenium.WebDriver;
 import page.checkout.PaymentPage;
 import strategy.PaymentMethods;
 
-public class OrderCheckoutWithCheck extends OrderCheckout implements PaymentMethods {
+public class OrderCheckoutWithCheck implements PaymentMethods {
 
     private final PaymentPage paymentPage;
 
     public OrderCheckoutWithCheck(WebDriver driver) {
-        super(driver);
         paymentPage = new PaymentPage(driver);
     }
 

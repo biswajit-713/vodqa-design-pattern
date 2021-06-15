@@ -6,6 +6,7 @@ import page.checkout.AddressPage;
 import page.checkout.ConfirmPage;
 import page.checkout.DeliveryPage;
 import page.checkout.PaymentPage;
+import strategy.PaymentMethods;
 
 public class OrderCheckout {
 
@@ -14,16 +15,20 @@ public class OrderCheckout {
     private final PaymentPage paymentPage;
     private final ConfirmPage confirmPage;
     private final OrderStatusPage orderStatusPage;
+    private PaymentMethods paymentMethods;
 
 
-    public OrderCheckout(WebDriver driver) {
+    public OrderCheckout(WebDriver driver, String paymentMethod) {
 
         this.addressPage = new AddressPage(driver);
         this.deliveryPage = new DeliveryPage(driver);
         this.paymentPage = new PaymentPage(driver);
         this.confirmPage = new ConfirmPage(driver);
         this.orderStatusPage = new OrderStatusPage(driver);
-
+        if (paymentMethod.equals("Check"))
+            this.paymentMethods = new OrderCheckoutWithCheck(driver);
+        else
+            this.paymentMethods = new OrderCheckoutWithCreditCard(driver);
     }
 
     private final void editShippingDetails() {
@@ -46,6 +51,7 @@ public class OrderCheckout {
     public final String placeOrder() {
         editShippingDetails();
         selectDeliveryOption();
+        paymentMethods.pay();
         confirmOrder();
         return getConfirmationStatus();
     }
