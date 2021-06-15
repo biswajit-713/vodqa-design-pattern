@@ -4,11 +4,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import page.checkout.PaymentPage;
 import page.component.CreditCardComponent;
+import strategy.PaymentMethods;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrderCheckoutWithCreditCard extends OrderCheckout {
+public class OrderCheckoutWithCreditCard extends OrderCheckout implements PaymentMethods {
 
     private final PaymentPage paymentPage;
     private final CreditCardComponent creditCardComponent;
@@ -20,7 +21,7 @@ public class OrderCheckoutWithCreditCard extends OrderCheckout {
     }
 
     @Override
-    protected void pay() {
+    public void pay() {
         paymentPage.getCreditCard().click();
 
         try {

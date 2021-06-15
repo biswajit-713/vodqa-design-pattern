@@ -2,8 +2,9 @@ package behaviour.payment;
 
 import org.openqa.selenium.WebDriver;
 import page.checkout.PaymentPage;
+import strategy.PaymentMethods;
 
-public class OrderCheckoutWithCheck extends OrderCheckout {
+public class OrderCheckoutWithCheck extends OrderCheckout implements PaymentMethods {
 
     private final PaymentPage paymentPage;
 
@@ -13,7 +14,7 @@ public class OrderCheckoutWithCheck extends OrderCheckout {
     }
 
     @Override
-    protected void pay() {
+    public void pay() {
         paymentPage.getCheck().click();
     }
 
