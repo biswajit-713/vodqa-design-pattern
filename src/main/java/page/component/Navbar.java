@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.BootStrap;
 
-public class Navbar extends BootStrap {
+public class Navbar {
     private WebDriver driver;
 
     public Navbar (WebDriver driver) {

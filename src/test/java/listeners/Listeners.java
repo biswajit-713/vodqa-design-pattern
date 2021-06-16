@@ -12,7 +12,7 @@ import resources.ExtentReportNG;
 
 import java.io.IOException;
 
-public class Listeners extends BootStrap implements ITestListener  {
+public class Listeners implements ITestListener  {
     ExtentTest extentTest;
     ExtentReports extentReports = ExtentReportNG.getExtentReport();
     ThreadLocal<ExtentTest> threadLocal = new ThreadLocal();
@@ -43,7 +43,7 @@ public class Listeners extends BootStrap implements ITestListener  {
         }
         try {
 
-            threadLocal.get().addScreenCaptureFromPath(getScreenshot(result.getMethod().getMethodName(), driver));
+            threadLocal.get().addScreenCaptureFromPath(BootStrap.getInstance().getScreenshot(result.getMethod().getMethodName(), driver));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import page.BootStrap;
 import utilities.Utilities;
 
+
 public class BaseTest {
     private DriverManagerFactory factory;
     protected WebDriver driver;
@@ -15,18 +16,17 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
 
-//        driver = new BootStrap().getDriver();
-        factory = new DriverManagerFactoryImpl();
-        driver = factory
-                    .getManager(Utilities.getProperty("browser"))
-                    .getDriver();
+        driver = BootStrap.getInstance().getDriver(Utilities.getProperty("browser"));
+//        factory = new DriverManagerFactoryImpl();
+//        driver = factory
+//                    .getManager(Utilities.getProperty("browser"))
+//                    .getDriver();
         driver.get(Utilities.getProperty("application_url"));
 
     }
 
     @AfterMethod
     public void tearDown() {
-//        factory.getManager().quit();
         driver.quit();
     }
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ProductDetailsPage extends BootStrap {
+public class ProductDetailsPage {
     private WebDriver driver;
 
     private By size = By.className("select-label");

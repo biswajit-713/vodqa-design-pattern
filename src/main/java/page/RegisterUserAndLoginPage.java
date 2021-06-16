@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class RegisterUserAndLoginPage extends BootStrap {
+public class RegisterUserAndLoginPage {
     private WebDriver driver;
 
     By createNewAccount = By.className("create-new-account");

@@ -21,12 +21,22 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BootStrap {
-    protected WebDriver driver;
-    private static Properties properties;
+    private WebDriver driver;
+    private static BootStrap bootStrap;
+
+    private BootStrap() {
+
+    }
+
+    public static BootStrap getInstance() {
+        if (bootStrap == null) {
+            bootStrap = new BootStrap();
+        }
+        return bootStrap;
+    }
 
     @SneakyThrows
-    public WebDriver getDriver() {
-        String browser = Utilities.getProperty("browser");
+    public WebDriver getDriver(String browser) {
 
         switch (browser){
             case "chrome_docker":
