@@ -1,22 +1,14 @@
 package spreetest;
 
 import behaviour.payment.OrderCheckout;
-import behaviour.payment.OrderCheckoutWithCheck;
-import behaviour.payment.OrderCheckoutWithCreditCard;
 import behaviour.product.ProductManagement;
 import behaviour.usermanagement.ShopperManagement;
-import com.google.common.util.concurrent.Uninterruptibles;
 import entity.Product;
 import entity.Shopper;
-import drivermanagement.factory.DriverManagerFactory;
-import drivermanagement.factory.DriverManagerFactoryImpl;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import spreetest.base.BaseTest;
-import utilities.Utilities;
-
-import java.util.concurrent.TimeUnit;
 
 public class PlaceOrderTests extends BaseTest {
 
@@ -24,9 +16,8 @@ public class PlaceOrderTests extends BaseTest {
     private ShopperManagement shopperManagement;
     private OrderCheckout checkout;
 
-    @Test
-    @Parameters("payByCheck")
-    public void buyUsingCheckTest(String paymentMethod) {
+    @Test(dataProvider = "getPaymentMethod")
+    public void buyUsingPaymentMethodTest(String paymentMethod) {
 
         Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
         Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
@@ -44,23 +35,11 @@ public class PlaceOrderTests extends BaseTest {
 
     }
 
-    @Test
-    @Parameters("payByCC")
-    public void buyUsingCreditCard(String paymentMethod) {
-        Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
-        Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
-
-        productManagement = new ProductManagement(driver);
-        shopperManagement = new ShopperManagement(driver);
-
-        shopperManagement.loginAs(existingShopper);
-
-        productManagement.addToCart(productToBuy);
-        checkout = new OrderCheckout(driver, paymentMethod);
-        String status = checkout.placeOrder();
-
-        Assert.assertEquals(status, "Order placed successfully",
-                "order could not be placed successfully");
-
+    @DataProvider
+    public Object[][] getPaymentMethod(){
+        Object[][] paymentMethods = new Object[2][1];
+        paymentMethods[0][0] = "Check";
+        paymentMethods[1][0] = "CreditCard";
+        return paymentMethods;
     }
 }
