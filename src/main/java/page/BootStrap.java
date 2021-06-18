@@ -11,32 +11,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import utilities.Utilities;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BootStrap {
-    private WebDriver driver;
-    private static BootStrap bootStrap;
+    private static WebDriver driver;
 
     private BootStrap() {
 
     }
 
-    public static BootStrap getInstance() {
-        if (bootStrap == null) {
-            bootStrap = new BootStrap();
-        }
-        return bootStrap;
-    }
-
     @SneakyThrows
-    public WebDriver getDriver(String browser) {
+    public static WebDriver getDriver(String browser) {
 
         switch (browser){
             case "chrome_docker":
@@ -59,7 +48,7 @@ public class BootStrap {
         return driver;
     }
 
-    public String getScreenshot(String testName, WebDriver driver) throws IOException {
+    public static String getScreenshot(String testName, WebDriver driver) throws IOException {
         File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshot, new File(System.getProperty("user.dir") + "/reports/"+testName+".png"));
         return testName+".png";
