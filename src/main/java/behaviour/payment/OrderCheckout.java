@@ -26,7 +26,7 @@ public class OrderCheckout {
         this.paymentPage = new PaymentPage(driver);
         this.confirmPage = new ConfirmPage(driver);
         this.orderStatusPage = new OrderStatusPage(driver);
-        this.paymentMethods = new PaymentFactory(driver).createPaymentFactory(paymentMethod);
+        this.paymentMethods = new PaymentFactory(driver).getPaymentMethod(paymentMethod);
     }
 
     private final void editShippingDetails() {

@@ -12,7 +12,7 @@ public class PaymentFactory {
         this.driver = driver;
     }
 
-    public PaymentMethods createPaymentFactory(String paymentMethod){
+    public PaymentMethods getPaymentMethod(String paymentMethod){
         if (paymentMethod.equals("Check"))
             return new OrderCheckoutWithCheck(driver);
         if (paymentMethod.equals("CreditCard"))
