@@ -2,6 +2,7 @@ package docker;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import page.BootStrap;
 import singleton.SeleniumGrid;
 import singleton.FileDistributor;
 

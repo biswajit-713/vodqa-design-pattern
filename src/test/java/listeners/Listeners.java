@@ -43,7 +43,7 @@ public class Listeners implements ITestListener  {
         }
         try {
 
-            threadLocal.get().addScreenCaptureFromPath(BootStrap.getScreenshot(result.getMethod().getMethodName(), driver));
+            threadLocal.get().addScreenCaptureFromPath(BootStrap.getInstance().getScreenshot(result.getMethod().getMethodName(), driver));
         } catch (IOException e) {
             e.printStackTrace();
         }

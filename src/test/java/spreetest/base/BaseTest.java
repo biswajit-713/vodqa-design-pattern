@@ -13,7 +13,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
 
-        driver = BootStrap.getDriver(Utilities.getProperty("browser"));
+        driver = BootStrap.getInstance().getDriver(Utilities.getProperty("browser"));
         driver.get(Utilities.getProperty("application_url"));
 
     }
