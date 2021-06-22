@@ -16,11 +16,11 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
 
-        driver = BootStrap.getInstance().getDriver(Utilities.getProperty("browser"));
-//        factory = new DriverManagerFactoryImpl();
-//        driver = factory
-//                    .getManager(Utilities.getProperty("browser"))
-//                    .getDriver();
+//        driver = BootStrap.getInstance().getDriver(Utilities.getProperty("browser"));
+        factory = new DriverManagerFactoryImpl();
+        driver = factory
+                    .getManager(Utilities.getProperty("browser"))
+                    .getDriver();
         driver.get(Utilities.getProperty("application_url"));
 
     }

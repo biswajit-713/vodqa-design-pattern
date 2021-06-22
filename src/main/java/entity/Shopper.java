@@ -66,6 +66,7 @@ public class Shopper {
         this.state = builder.state;
     }
 
+
     public static class builder {
         private final String email;
         private final String password;

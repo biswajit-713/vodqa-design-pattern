@@ -35,6 +35,7 @@ public class PlaceOrderTests extends BaseTest {
 
         shopperManagement.loginAs(existingShopper);
         productManagement.addToCart(productToBuy);
+
         checkout = new OrderCheckoutWithCheck(driver);
         String status = checkout.placeOrder();
 

@@ -18,6 +18,7 @@ public class RegisterNewShopperTests extends BaseTest {
         String name = "john_doe_" + Utilities.getRandomNumber(1000);
         String email = name + "@shopper.com";
         String password = "Passw0rd";
+
         Shopper newShopper = new Shopper.builder(email, password)
                 .firstName("john")
                 .lastName("doe")

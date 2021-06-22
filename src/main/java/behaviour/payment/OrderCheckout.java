@@ -16,7 +16,7 @@ public abstract class OrderCheckout {
     private final OrderStatusPage orderStatusPage;
 
 
-    public OrderCheckout(WebDriver driver) {
+    protected OrderCheckout(WebDriver driver) {
 
         this.addressPage = new AddressPage(driver);
         this.deliveryPage = new DeliveryPage(driver);
@@ -26,7 +26,7 @@ public abstract class OrderCheckout {
 
     }
 
-    private final void editShippingDetails() {
+    private final void updateShippingDetails() {
         addressPage.saveAndContinue().click();
     }
 
@@ -40,16 +40,17 @@ public abstract class OrderCheckout {
         confirmPage.placeOrder().click();
     }
 
-    private final String getConfirmationStatus() {
+    private String getConfirmationStatus() {
 //        return orderStatusPage.getStatus().getText();
         return "Order placed successfully";
     }
 
     public final String placeOrder() {
-        editShippingDetails();
+        updateShippingDetails();
         selectDeliveryOption();
         pay();
         confirmOrder();
         return getConfirmationStatus();
+
     }
 }

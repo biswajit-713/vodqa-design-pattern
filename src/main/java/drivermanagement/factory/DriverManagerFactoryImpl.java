@@ -3,7 +3,6 @@ package drivermanagement.factory;
 import drivermanagement.manager.ChromeDriverManager;
 import drivermanagement.manager.DriverManager;
 import drivermanagement.manager.FirefoxDriverManager;
-import utilities.Utilities;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +40,5 @@ public class DriverManagerFactoryImpl implements DriverManagerFactory{
 //        }
 //        return driverManager;
 
-//        TODO - remove the step and code it during the session
     }
 }
