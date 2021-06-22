@@ -10,11 +10,6 @@
             <exclude name="fail"></exclude>
         </run>
     </groups>
-    <test name="StartStopDocker">
-        <classes>
-            <class name="docker.StartStopDocker"></class>
-        </classes>
-    </test>
     <test name="RegisterUserTests">
         <classes>
             <class name="spreetest.RegisterNewShopperTests"></class>

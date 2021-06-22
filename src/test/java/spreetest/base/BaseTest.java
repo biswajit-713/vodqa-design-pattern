@@ -17,6 +17,7 @@ public class BaseTest {
     public void setUp() {
 
 //        driver = BootStrap.getInstance().getDriver(Utilities.getProperty("browser"));
+//        factory pattern
         factory = new DriverManagerFactoryImpl();
         driver = factory
                     .getManager(Utilities.getProperty("browser"))

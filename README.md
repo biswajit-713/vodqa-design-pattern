@@ -1,21 +1,12 @@
 # Running the tests
 
-You can run the tests using the following command
+Run the test - **$mvn test**
 
-**mvn compile test** or **mvn test**
+The main branch has the following patterns
+* Factory pattern (in BaseTest.java)
+* Builder pattern (in RegisterNewShopperTest.java)
+* Template method pattern (in PlaceOrderTests.java)
 
-By default, the tests will spin up a selenium grid setup in your local instance and run the tests using RemoteWebDriver
-To use your local browser instead, in your application_test.properties file, set the browser property to "**chrome_local**"
+Refer to branch singleton-pattern for Singleton Pattern and strategy-pattern for Strategy Pattern
 
-**Running the login and register new user tests**
-
-For login tests, you will have to create a new user via the UI and store the credentials in
-
-1. Export the data to system environment variables and use it in the tests (recommended)
-2. _getValidUserData_ data provider in the LoginTests.java file (do not check in this file with test credentials to avoid security issues)
-
-For register new users test, the test will generate a random email id every time the test is run, with the same password. If needed, you can pull the password from external sources
-
-**Running the cart tests**
-
-For the cart tests, the data is fetched from the "Product Details.xlsx" file in the resources folder
+You may refer to the comments in the code to find out the relevant pattern.

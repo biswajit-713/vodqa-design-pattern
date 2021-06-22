@@ -19,6 +19,7 @@ public class RegisterNewShopperTests extends BaseTest {
         String email = name + "@shopper.com";
         String password = "Passw0rd";
 
+//        builder pattern
         Shopper newShopper = new Shopper.builder(email, password)
                 .firstName("john")
                 .lastName("doe")

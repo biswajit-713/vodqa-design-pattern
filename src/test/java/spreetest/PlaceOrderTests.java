@@ -37,6 +37,8 @@ public class PlaceOrderTests extends BaseTest {
         productManagement.addToCart(productToBuy);
 
         checkout = new OrderCheckoutWithCheck(driver);
+
+//        template method pattern
         String status = checkout.placeOrder();
 
         Assert.assertEquals(status, "Order placed successfully",
@@ -56,6 +58,8 @@ public class PlaceOrderTests extends BaseTest {
 
         productManagement.addToCart(productToBuy);
         checkout = new OrderCheckoutWithCreditCard(driver);
+
+//        template method pattern
         String status = checkout.placeOrder();
 
         Assert.assertEquals(status, "Order placed successfully",
