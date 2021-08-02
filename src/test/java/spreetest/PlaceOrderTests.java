@@ -19,7 +19,7 @@ public class PlaceOrderTests extends BaseTest {
     @Test(dataProvider = "getPaymentMethod")
     public void buyUsingPaymentMethodTest(String paymentMethod) {
 
-        Shopper existingShopper = new Shopper.builder("spree@spree.com", "spree123").build();
+        Shopper existingShopper = new Shopper.ShopperBuilder("spree@spree.com", "spree123").build();
         Product productToBuy = new Product.builder().name("Oversize Sweatshirt").size("XL").quantity(2).build();
 
         productManagement = new ProductManagement(driver);

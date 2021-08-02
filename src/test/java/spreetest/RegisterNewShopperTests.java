@@ -18,14 +18,15 @@ public class RegisterNewShopperTests extends BaseTest {
         String name = "john_doe_" + Utilities.getRandomNumber(1000);
         String email = name + "@shopper.com";
         String password = "Passw0rd";
-        Shopper newShopper = new Shopper.builder(email, password)
-                .firstName("john")
-                .lastName("doe")
-                .phoneNumber("2013520000")
-                .address("160 Balfour Road")
-                .city("Akiachak")
-                .zipCode("99551")
-                .build();
+        Shopper newShopper = new Shopper.ShopperBuilder(email, password).builder($ -> {
+            $.firstName = "john";
+            $.lastName = "doe";
+            $.phoneNumber = "2013520000";
+            $.address = "160 balfour road";
+            $.city = "orlando";
+            $.state = "Florida";
+            $.zipcode = "30052";
+        }).build();
 
         shopperManagement = new ShopperManagement(driver);
         myAccount = new MyAccount(driver);
@@ -41,16 +42,16 @@ public class RegisterNewShopperTests extends BaseTest {
         String name = "john_doe_" + Utilities.getRandomNumber(1000);
         String email = name + "@shopper.com";
         String password = "Passw0rd";
-        Shopper newShopper = new Shopper.builder(email, password)
-                .firstName("john")
-                .lastName("doe")
-                .phoneNumber("2013520000")
-                .address("160 balfour road")
-                .address2("montana garden")
-                .city("orlando")
-                .state("Florida")
-                .zipCode("30052")
-                .build();
+        Shopper newShopper = new Shopper.ShopperBuilder(email, password).builder($ -> {
+            $.firstName = "john";
+            $.lastName = "doe";
+            $.phoneNumber = "2013520000";
+            $.address = "160 balfour road";
+            $.address2 = "montana garden";
+            $.city = "orlando";
+            $.state = "Florida";
+            $.zipcode = "30052";
+        }).build();
 
         shopperManagement = new ShopperManagement(driver);
         myAccount = new MyAccount(driver);
